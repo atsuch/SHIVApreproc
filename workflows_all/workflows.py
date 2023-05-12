@@ -1,6 +1,6 @@
 
-from wf_utils import *
-from subworkflow_int_norm import *
+from workflows_all.wf_utils import *
+from workflows_all.subworkflow_int_norm import *
 import os.path as op
 
 from nipype.pipeline.engine import Workflow, Node, MapNode

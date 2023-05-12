@@ -10,12 +10,11 @@ Perform the following steps:
 @author: atsuchida, iastafeva
 '''
 
-
 import os
 import os.path as op
 import json
 from nipype import config, logging
-from workflows import *
+from workflows_all.workflows import *
 import shutil
 from pathlib import Path
 
