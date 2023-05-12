@@ -14,7 +14,7 @@ import os
 import os.path as op
 import json
 from nipype import config, logging
-from workflows_all.workflows import *
+from shiva_preproc.workflows import *
 import shutil
 from pathlib import Path
 
