@@ -33,17 +33,17 @@ python setup.py install
 3. Specify the information in config_process_subject.json and subjects_list.txt, specificlly:
 
 - config_process_subject.json
-<span style="color: red">this is red</span>
+
 {
-    "svn_dir": "/path/to/shiva_preproc/folder", //
-    "wd": "/path/where/preprocessed/images/will/be/store",
-    "data_dir": "/path/to/raw/images",
-    "in_dat_tmp": "%s_%s.%s",
+    "svn_dir": "/path/to/shiva_preproc/folder", <br />
+    "wd": "/path/where/preprocessed/images/will/be/store",<br />
+    "data_dir": "/path/to/raw/images",<br />
+    "in_dat_tmp": "%s_%s.%s",<br />
     "in_dat_tmp_arg": {
-        "T1": [["subject_id", "T1", "nii.gz"]],             /name of T1w images (subject_id_T1.nii.gz)
-        "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],       /name of FLAIR images (subject_id_FLAIR.nii.gz)
-        "brainmask": [["subject_id", "braimask", "nii.gz"]] /if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)
-        },
+        "T1": [["subject_id", "T1", "nii.gz"]],             /name of T1w images (subject_id_T1.nii.gz)<br />
+        "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],       /name of FLAIR images (subject_id_FLAIR.nii.gz)<br />
+        "brainmask": [["subject_id", "braimask", "nii.gz"]] /if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)<br />
+        },<br />
     "resampling_to_111": "False",                 /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'
     "path_to_spm": "/path/to/spm",                                      / exapmle:    "/srv/shares/softs/spm12-full",
     "spm_standalone": "/path/to/spm/standalone",                        / exapmle:    "/srv/shares/softs/spm12/run_spm12.sh",
