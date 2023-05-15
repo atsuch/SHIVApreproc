@@ -46,7 +46,7 @@ python setup.py install
         <b>/if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)</b>
         },
     "resampling_to_111": "False",            
-    <b> /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'<b> 
+    <b> /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'</b> 
     "path_to_spm": "/path/to/spm",                                 <b>  / exapmle:    "/srv/shares/softs/spm12-full",</b> 
     "spm_standalone": "/path/to/spm/standalone",                   <b>  /exapmle: "/srv/shares/softs/spm12/run_spm12.sh",</b> 
     "mcr": "/path/to/mcr",                                         <b>  /example:     "/srv/shares/softs/MCR/v713"</b> 
