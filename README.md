@@ -33,9 +33,12 @@ python setup.py install
 3. Specify the information in config_process_subject.json and subjects_list.txt, specificlly:
 
 - config_process_subject.json
-
+```diff
++ this text is highlighted in green
+- this text is highlighted in red
+```
 {
-    "svn_dir": "/path/to/shiva_preproc/folder",
+    "svn_dir": "/path/to/shiva_preproc/folder", //
     "wd": "/path/where/preprocessed/images/will/be/store",
     "data_dir": "/path/to/raw/images",
     "in_dat_tmp": "%s_%s.%s",
