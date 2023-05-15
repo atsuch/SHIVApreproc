@@ -32,7 +32,7 @@ The T1w images needs to be resampling to 1 by 1 by 1 mm.
 </pre>
 
  - subjects_list.txt in this case:
-
+<pre>
 10304
 10804
-20804
+20804 </pre>
