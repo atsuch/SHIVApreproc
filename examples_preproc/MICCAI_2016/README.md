@@ -18,7 +18,7 @@ The T1w images needs to be resampling to 1 by 1 by 1 mm.
     "wd": "/homes_unix/iastafeva/dev/dev_preproc_github/SHIVApreproc/examples_preproc/MICCAI_2016/preproc_images",
     "data_dir": "/homes_unix/iastafeva/dev/dev_preproc_github/SHIVApreproc/examples_preproc/MICCAI_2016/raw_images",
     "in_dat_tmp": "%s_%s.%s",
-    "resampling_to_111": "True",    
+    "resampling_to_111": <br>"True"</br>,    
     "spm_standalone": "/srv/shares/softs/spm12/run_spm12.sh",
     "path_to_spm": "/srv/shares/softs/spm12-full",
     "mcr": "/srv/shares/softs/MCR/v713",
