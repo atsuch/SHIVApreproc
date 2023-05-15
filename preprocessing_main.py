@@ -19,7 +19,6 @@ from nipype import config, logging
 from shiva_preproc.workflows import *
 import shutil
 from pathlib import Path
-# %%
 
 SUBJECTFILE = 'subjects_list.txt'  
 CONFIGFILE = 'config_process_subject.json'
