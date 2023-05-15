@@ -6,13 +6,15 @@ Perform the following steps:
 2. If no brainmask in reference space is provided, use SPM to generate it (requires spm_standalone and mcr path in the configuration).
 3. Apply the brain mask to the T1w and FLAIR images and crop it (with _CROP_DIMS) + intensity normalization.
 
-@date: 11-04-2023
+@date: 12-04-2023
 @author: atsuchida, iastafeva
 '''
-# %%
+
+
 import os
 import os.path as op
 import json
+import ast
 from nipype import config, logging
 from shiva_preproc.workflows import *
 import shutil
@@ -80,8 +82,8 @@ def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='Mult
             in_dat_tmp_arg=prep_dict['in_dat_tmp_arg'],
             im_names=in_imnames,
             reorient=True,  
-            resample=prep_dict['resampling_to_111'],   
-            ibrainmask=ibrainmask, 
+            resample= ast.literal_eval(prep_dict['resampling_to_111']),   
+            ibrainmask=False, 
             coreg_ref_space='T1')  
         
         prep_wf.config['execution']['crashfile_format'] = 'txt'
