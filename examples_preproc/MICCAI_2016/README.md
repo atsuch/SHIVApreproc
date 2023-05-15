@@ -14,20 +14,20 @@ The T1w images needs to be resampling to 1 by 1 by 1 mm.<br />
 <br />
  <pre>
 {
-    "svn_dir": "/homes_unix/SHIVApreproc/shiva_preproc/",
-    "wd": "/homes_unix/SHIVApreproc/examples_preproc/MICCAI_2016/preproc_images",
-    "data_dir": "/homes_unix/SHIVApreproc/examples_preproc/MICCAI_2016/raw_images",
-    "in_dat_tmp": "%s_%s.%s",
-    "resampling_to_111": <b>"True"</b>,    
-    "spm_standalone": "/srv/shares/softs/spm12/run_spm12.sh",
-    "path_to_spm": "/srv/shares/softs/spm12-full",
-    "mcr": "/srv/shares/softs/MCR/v713",
+    "svn_dir":             "/homes_unix/SHIVApreproc/shiva_preproc/",
+    "wd":                  "/homes_unix/SHIVApreproc/examples_preproc/MICCAI_2016/preproc_images",
+    "data_dir":            "/homes_unix/SHIVApreproc/examples_preproc/MICCAI_2016/raw_images",
+    "in_dat_tmp":          "%s_%s.%s",
+    "resampling_to_111":   <b>"True"</b>,    
+    "spm_standalone":      "/srv/shares/softs/spm12/run_spm12.sh",
+    "path_to_spm":         "/srv/shares/softs/spm12-full",
+    "mcr":                 "/srv/shares/softs/MCR/v713",
     "in_dat_tmp_arg": {
        "T1": [["subject_id", "T1", "nii.gz"]],
        "FLAIR": [["subject_id", "FLAIR", "nii.gz"]]
        },
-    "plugin": "MultiProc",
-    "plugin_args": {"n_procs": 25}   
+    "plugin":              "MultiProc",
+    "plugin_args":         {"n_procs": 25}   
 }
 </pre>
 
