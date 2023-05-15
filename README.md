@@ -40,9 +40,9 @@ python setup.py install
     "data_dir": "/path/to/raw/images",
     "in_dat_tmp": "%s_%s.%s",
     "in_dat_tmp_arg": {
-        "T1": [["subject_id", "T1", "nii.gz"]],              **/name of T1w images (subject_id_T1.nii.gz)**
-        "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],      **/name of FLAIR images (subject_id_FLAIR.nii.gz)**
-        "brainmask": [["subject_id", "braimask", "nii.gz"]] `**` /if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)`**` 
+        "T1": [["subject_id", "T1", "nii.gz"]],             <b>/name of T1w images (subject_id_T1.nii.gz)</b>
+        "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],      <b>/name of FLAIR images (subject_id_FLAIR.nii.gz)</b>
+        "brainmask": [["subject_id", "braimask", "nii.gz"]] <b>/if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)</b>
         },
     "resampling_to_111": "False",             <b> /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'<b> 
     "path_to_spm": "/path/to/spm",                                     <b>  / exapmle:    "/srv/shares/softs/spm12-full",<b> 
