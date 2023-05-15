@@ -4,7 +4,7 @@
 In this example we provide the preprocessing of 3 subjects.<br />
 <br />
 Modalities which were used: T1w, FLAIR<br />
-We don't provide the brainmask so it's will be generated automaticly in preprocessing process using SPM.</>
+We don't provide the brainmask so it's will be generated automaticly in preprocessing process using SPM.<br />
 The T1w images needs to be resampling to 1 by 1 by 1 mm.<br />
 
 - The config_process_subject.json in this case:
