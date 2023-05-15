@@ -44,7 +44,7 @@ python setup.py install
         "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],       /name of FLAIR images (subject_id_FLAIR.nii.gz)
         "brainmask": [["subject_id", "braimask", "nii.gz"]] /if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)
         },
-    "resampling_to_111": "False",                /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'
+    "resampling_to_111": "False",                 /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'
     "path_to_spm": "/path/to/spm",                                      / exapmle:    "/srv/shares/softs/spm12-full",
     "spm_standalone": "/path/to/spm/standalone",                        / exapmle:    "/srv/shares/softs/spm12/run_spm12.sh",
     "mcr": "/path/to/mcr",                                              /example:     "/srv/shares/softs/MCR/v713"
