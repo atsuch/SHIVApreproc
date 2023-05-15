@@ -15,6 +15,7 @@ from nipype.interfaces.fsl.maths import Threshold, MultiImageMaths, ApplyMask, B
 
 from nipype.interfaces.spm.preprocess import NewSegment
 
+
 def coregImages(name="coregImages",
                 ref_imname="T1",
                 coreg_imnames=["FLAIR", "T2"],
@@ -641,10 +642,11 @@ def getBrainmask(name='getBrainmask',
             mcr = method_options.pop('mcr')
         else:
             spm_standalone, mcr = "", ""
-        print(spm_standalone)
+        
         spmBrainmask = prepSpmBrainmask(spm_standalone=spm_standalone,
                                         mcr=mcr,
                                         spm_seg_options=method_options,
+                                        spm_tpm_file=op.join(method_options['paths'], "tpm", "TPM.nii"),
                                         qc=qc)
         wf.connect(GZinImages, "out_file", spmBrainmask, 'inputNode.ref_main')
         
