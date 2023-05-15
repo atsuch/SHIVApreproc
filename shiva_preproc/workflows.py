@@ -2,7 +2,6 @@
 from shiva_preproc.wf_utils import *
 from shiva_preproc.subworkflow_int_norm import *
 import os.path as op
-
 from nipype.pipeline.engine import Workflow, Node, MapNode
 from nipype.algorithms.misc import Gunzip
 from nipype.interfaces.io import DataGrabber, DataSink

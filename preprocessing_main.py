@@ -6,13 +6,15 @@ Perform the following steps:
 2. Use SPM to generate a BRAINMASK (using T1w-image).
 3. Apply the brain mask to the T1w and FLAIR images and crop it (with _CROP_DIMS) + intensity normalization.
 
-@date: 11-04-2023
+@date: 12-04-2023
 @author: atsuchida, iastafeva
 '''
+
 
 import os
 import os.path as op
 import json
+import ast
 from nipype import config, logging
 from shiva_preproc.workflows import *
 import shutil
@@ -73,7 +75,7 @@ def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='Mult
             in_dat_tmp_arg=prep_dict['in_dat_tmp_arg'],
             im_names=list(prep_dict['in_dat_tmp_arg'].keys()),
             reorient=True,  
-            resample=prep_dict['resampling_to_111'],   
+            resample= ast.literal_eval(prep_dict['resampling_to_111']),   
             ibrainmask=False, 
             coreg_ref_space='T1')  
         
