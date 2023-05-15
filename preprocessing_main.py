@@ -22,7 +22,7 @@ from pathlib import Path
 import sys
 from shiva_preproc.workflows import *
 
-SUBJECTFILE = 'MICCAI_2016_subjects_list.txt'  
+SUBJECTFILE = 'subjects_list.txt'  
 CONFIGFILE = 'config_process_subject.json'
 
 _CROP_DIMS = [160, 214, 176] 
