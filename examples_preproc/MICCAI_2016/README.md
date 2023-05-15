@@ -10,7 +10,7 @@ The T1w images needs to be resampling to 1 by 1 by 1 mm.
 - The config_process_subject.json in this case:
 
  Please note what we don't provide the path to brainmask since we want to generate it during preprocessing and 
- we needs to resample T1w images we put  "True" in "resampling_to_111".
+ we needs to resample T1w images we put  "resampling_to_111": <b>"True"</b>.
  
  <pre>
 {
@@ -18,7 +18,7 @@ The T1w images needs to be resampling to 1 by 1 by 1 mm.
     "wd": "/homes_unix/iastafeva/dev/dev_preproc_github/SHIVApreproc/examples_preproc/MICCAI_2016/preproc_images",
     "data_dir": "/homes_unix/iastafeva/dev/dev_preproc_github/SHIVApreproc/examples_preproc/MICCAI_2016/raw_images",
     "in_dat_tmp": "%s_%s.%s",
-    "resampling_to_111": <pre><br>"True"</br></pre>,    
+    "resampling_to_111": <b>"True"</b>,    
     "spm_standalone": "/srv/shares/softs/spm12/run_spm12.sh",
     "path_to_spm": "/srv/shares/softs/spm12-full",
     "mcr": "/srv/shares/softs/MCR/v713",
