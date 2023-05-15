@@ -1,17 +1,17 @@
 ## Preprocessing MICAI 2016
 
 
-In this example we provide the preprocessing of 3 subjects.
-
-Modalities which were used: T1w, FLAIR</>
+In this example we provide the preprocessing of 3 subjects.<br />
+<br />
+Modalities which were used: T1w, FLAIR<br />
 We don't provide the brainmask so it's will be generated automaticly in preprocessing process using SPM.</>
-The T1w images needs to be resampling to 1 by 1 by 1 mm.</>
+The T1w images needs to be resampling to 1 by 1 by 1 mm.<br />
 
 - The config_process_subject.json in this case:
-</>
+<br />
  Please note what we don't provide the path to brainmask since we want to generate it during preprocessing and 
  we needs to resample T1w images we put  "resampling_to_111": <b>"True"</b>.
- </>
+<br />
  <pre>
 {
     "svn_dir": "/homes_unix/iastafeva/dev/dev_preproc_github/SHIVApreproc/shiva_preproc/",
