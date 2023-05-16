@@ -25,12 +25,12 @@ The pipelines performs:
 
 ## Usage
 
-1. To preproces the T1w and FLAIR raw images please clone this GitHub repository.
-2. In SHIVApreproc folder run following command in Terminal to install shiva_preproc module:
+1. To preprocess the T1w and FLAIR raw images, please clone this GitHub repository.
+2. In the SHIVApreproc folder, run the following command in the terminal to install the shiva_preproc module:
 
 python setup.py install
 
-3. Specify the information in config_process_subject.json and subjects_list.txt, specificlly:
+3. Specify the information in config_process_subject.json and subjects_list.txt:
 
 - config_process_subject.json
 <pre>
@@ -43,11 +43,11 @@ python setup.py install
         "T1": [["subject_id", "T1", "nii.gz"]],                        <b>/name of T1w images (subject_id_T1.nii.gz)</b>
         "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],                  <b>/name of FLAIR images (subject_id_FLAIR.nii.gz)</b>
         "brainmask": [["subject_id", "braimask", "nii.gz"]] 
-        <b>/if brainmask were provided (subject_id_brainmask.nii.gz) else delete this line)</b>
+        <b>/if a brain mask were present (subject_id_brainmask.nii.gz) else delete this line)</b>
         },
     "resampling_to_111": "False",            
     <b> /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'</b> 
-    "path_to_spm": "/path/to/spm",                                 <b>  / exapmle:    "/srv/shares/softs/spm12-full",</b> 
+    "path_to_spm": "/path/to/spm",                                 <b>  /exapmle:    "/srv/shares/softs/spm12-full",</b> 
     "spm_standalone": "/path/to/spm/standalone",                   <b>  /exapmle: "/srv/shares/softs/spm12/run_spm12.sh",</b> 
     "mcr": "/path/to/mcr",                                         <b>  /example:     "/srv/shares/softs/MCR/v713"</b> 
     "plugin": "MultiProc",
@@ -55,9 +55,9 @@ python setup.py install
 }
 </pre>
 - subjects_list.txt
-Please provide the subjects IDs of T1w, FLAIR and/or brainmasks which you want to preproces.
+Please provide the subject IDs of T1w, FLAIR, and/or brain masks you would like to preprocess.
 
-4. Run the preprocessing_main.py to start the preprocessing of raw images:
+4. Run the preprocessing_main.py file to start preprocessing the raw images:
 
 python  preprocessing_main.py
 
