@@ -1,4 +1,4 @@
-# SHIVAtools_preproc
+# SHIVApreproc
 Preprocessing pipelines to use SHIVA tools
 
 ## Description
@@ -12,16 +12,16 @@ The pipelines performs:
 1) Reorient image to standard (RAS/LAS)
 2) Coregister images to a reference modality (usually T1w)
 3) Resample images to 1x1x1 mm (if needed) 
-4) Brain mask generation (if not provided using SPM)
+4) Brain mask generation (if not provided)
 5) Image cropping to 160 × 214 × 176 
 6) Intensity normalization inside the brain mask  (min-max normalization with the max set to the 99th percentile of the brain voxel values to avoid "hot spots")
 
 ## Dependency
 
 - FSL v.6.0.4 
-- Freesurfer v7.3.2 (for brain mask generation based on SynsthSeg)
 - Nipype v.1.7.0 (python package) 
-- SMP12 (we are using with Matlab v.R2021a)
+- If generating brainmask, SMP12 (we are using with Matlab v.R2021a) 
+* Note that brainmask can be generated with FSL or SynthSeg (with Freesurfer 7.3.2), but the sample script included here will use SPM
 
 ## Usage
 
@@ -43,7 +43,7 @@ python setup.py install
         "T1": [["subject_id", "T1", "nii.gz"]],                        <b>/name of T1w images (subject_id_T1.nii.gz)</b>
         "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],                  <b>/name of FLAIR images (subject_id_FLAIR.nii.gz)</b>
         "brainmask": [["subject_id", "braimask", "nii.gz"]] 
-        <b>/if a brain mask were present (subject_id_brainmask.nii.gz) else delete this line)</b>
+        <b>/if a brain mask (subject_id_brainmask.nii.gz) will be provided rather than generated.  Otherwise delete this line)</b>
         },
     "resampling_to_111": "False",            
     <b> /if raw T1w images needs to be resample to 1 by 1 by 1 mm change to 'True'</b> 
@@ -55,7 +55,7 @@ python setup.py install
 }
 </pre>
 - subjects_list.txt
-Please provide the subject IDs of T1w, FLAIR, and/or brain masks you would like to preprocess.
+Please provide the subject IDs of T1w, FLAIR, (and any other modality to be processed together), and optionally a brain mask (in reference T1w space) you would like to preprocess.
 
 4. Run the preprocessing_main.py file to start preprocessing the raw images:
 
