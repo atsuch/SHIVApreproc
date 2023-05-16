@@ -1,16 +1,16 @@
 ## Preprocessing MICAI 2016
 
 
-In this example we provide the preprocessing of 3 subjects.<br />
+In this example we are providing pre-processing of 3 subjects.<br />
 <br />
 Modalities which were used: T1w, FLAIR<br />
-We don't provide the brainmask so it's will be generated automaticly in preprocessing process using SPM.<br />
-The T1w images needs to be resampling to 1 by 1 by 1 mm.<br />
+
+We do not provide the brain mask, so it is automatically generated in the preprocessing process with SPM.<br />
+The T1w images have to be rasterized to 1 x 1 x 1 mm.<br />
 
 - The config_process_subject.json in this case:
 <br />
- Please note what we don't provide the path to brainmask since we want to generate it during preprocessing and 
- we needs to resample T1w images we put  "resampling_to_111": <b>"True"</b>.
+ Please note what we don't provide the path to brainmask and we needs to resample T1w images so the json file will be looking like following: 
 <br />
  <pre>
 {
@@ -18,7 +18,7 @@ The T1w images needs to be resampling to 1 by 1 by 1 mm.<br />
     "wd":                  "/homes_unix/SHIVApreproc/examples_preproc/MICCAI_2016/preproc_images",
     "data_dir":            "/homes_unix/SHIVApreproc/examples_preproc/MICCAI_2016/raw_images",
     "in_dat_tmp":          "%s_%s.%s",
-    "resampling_to_111":   <b>"True"</b>,    
+    <b>"resampling_to_111":   "True"</b>,    
     "spm_standalone":      "/srv/shares/softs/spm12/run_spm12.sh",
     "path_to_spm":         "/srv/shares/softs/spm12-full",
     "mcr":                 "/srv/shares/softs/MCR/v713",
