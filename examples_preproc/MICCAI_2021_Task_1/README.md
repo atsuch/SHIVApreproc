@@ -25,7 +25,7 @@ The T1w images do not need to be resampled to 1 x 1 x 1 mm.<br />
     "in_dat_tmp_arg": {
        "T1": [["subject_id", "T1", "nii.gz"]],
        "FLAIR": [["subject_id", "FLAIR", "nii.gz"]],
-       "brainmasks": [["subject_id", "brainmask", "nii.gz"]]
+       "brainmask": [["subject_id", "brainmask", "nii.gz"]]
        },
     "plugin":              "MultiProc",
     "plugin_args":         {"n_procs": 25}   
