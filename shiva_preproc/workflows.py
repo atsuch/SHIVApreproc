@@ -196,7 +196,7 @@ def intNormImages(name='intNormImages',
 
 def prepSpmBrainmask(name="prepSpmBrainmask",
                      spm_standalone="/srv/shares/softs/spm12/run_spm12.sh",
-                     mcr="/srv/shares/softs/MCR/v713",
+                     mcr="/srv/shares/softs/MCR/v713",             
                      spm_tpm_file="/srv/shares/softs/spm12-full/tpm/TPM.nii",
                      spm_seg_options={},
                      qc=True):
@@ -207,7 +207,7 @@ def prepSpmBrainmask(name="prepSpmBrainmask",
         affine_regularization = 'mni',
         sampling_distance = 3,
         use_mcr = False,
-        paths = ['/srv/shares/softs/spm12-full/'],
+        paths = [],
         warping_regularization = [0, 0.001, 0.5, 0.5, 0.2]
         )
     
@@ -221,12 +221,12 @@ def prepSpmBrainmask(name="prepSpmBrainmask",
         spm_seg_opts['use_mcr'] = True
         spm_seg_opts['mfile'] = False
         spm_seg_opts.pop('paths')
-   
+        
     # If any options are provided, change the default values
     if spm_seg_options:
-        for k, v in spm_seg_options:
+        for k, v in spm_seg_options.items():
             spm_seg_opts[k] = v
-
+        spm_seg_opts.pop('paths')
     wf=Workflow(name)
     #inputNode
     inputNode = Node(IdentityInterface(fields=["ref_main"], mandatory_inputs=True),
@@ -634,16 +634,28 @@ def getBrainmask(name='getBrainmask',
 
     # if method='spm', perform SPM NewSegment (> spm8)
     if method == 'spm':
+        if 'paths' in method_options.keys():
+            spm_tpm_file = op.join(method_options['paths'][0], 'tpm', 'TPM.nii')
+        else:
+            raise ValueError('Please provide path to SPM12')    
+        
         if 'spm_standalone' in method_options.keys():
             spm_standalone = method_options.pop('spm_standalone')
             if not 'mcr' in method_options.keys():
                 raise ValueError('Please provide mcr if using spm standalone')
             mcr = method_options.pop('mcr')
+         
         else:
             spm_standalone, mcr = "", ""
+<<<<<<< HEAD
         
+=======
+   
+        print(spm_standalone)
+>>>>>>> ea822dd ("Updated 15 May 2023")
         spmBrainmask = prepSpmBrainmask(spm_standalone=spm_standalone,
                                         mcr=mcr,
+                                        spm_tpm_file=spm_tpm_file,
                                         spm_seg_options=method_options,
                                         spm_tpm_file=op.join(method_options['paths'], "tpm", "TPM.nii"),
                                         qc=qc)

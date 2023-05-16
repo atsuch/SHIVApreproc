@@ -16,15 +16,16 @@ import os.path as op
 import json
 import ast
 from nipype import config, logging
-from shiva_preproc.workflows import *
+
 import shutil
 from pathlib import Path
+import sys
+from shiva_preproc.workflows import *
 
 SUBJECTFILE = 'subjects_list.txt'  
 CONFIGFILE = 'config_process_subject.json'
 
 _CROP_DIMS = [160, 214, 176] 
-
 
 def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='MultiProc'):
     
@@ -72,6 +73,8 @@ def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='Mult
         if 'brainmask' in in_imnames:
             ibrainmask = True
             in_imnames.remove('brainmask') 
+        else: ibrainmask = False
+        
         prep_wf = prepImages(
             name=prep_wf_name,
             base_dir=prep_dict['wd'],
@@ -82,7 +85,7 @@ def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='Mult
             im_names=in_imnames,
             reorient=True,  
             resample= ast.literal_eval(prep_dict['resampling_to_111']),   
-            ibrainmask=False, 
+            ibrainmask=ibrainmask, 
             coreg_ref_space='T1')  
         
         prep_wf.config['execution']['crashfile_format'] = 'txt'
@@ -108,7 +111,7 @@ def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='Mult
             os.makedirs(op.join(batch_logdir, brainmask_wf_name), exist_ok=True)
 
             
-            if prep_dict['resampling_to_111'] == 'True':
+            if ast.literal_eval(prep_dict['resampling_to_111']):
                 in_dat_tmp_arg_prep ={'ref_main': [['{}Sink'.format(prep_wf_name), 'resampled_images/_subject_id_', 'subject_id', '/_resampImages0/*']]}
             else:
                 in_dat_tmp_arg_prep ={'ref_main': [['{}Sink'.format(prep_wf_name), 'reoriented_images/_subject_id_', 'subject_id', '/_reorImages0/*']]}    
@@ -146,12 +149,15 @@ def main(sublist_txt=SUBJECTFILE, config_json=CONFIGFILE, qc=False, plugin='Mult
         print ('Performing intensity normalizations of images in the {} workflow...'.format(preproc_wf_name))
         os.makedirs(op.join(batch_logdir, preproc_wf_name), exist_ok=True)
         
-        if prep_dict['resampling_to_111'] == 'True':
+        if ast.literal_eval(prep_dict['resampling_to_111']):
             T1_prep = [['{}Sink'.format(prep_wf_name), 'resampled_images/_subject_id_', 'subject_id', '/_resampImages0/*']]
-            bm = [['{}Sink'.format(prep_wf_name), 'resampled_brainmask/_subject_id_', 'subject_id', '/*']]
+            if ibrainmask:
+                bm = [['{}Sink'.format(prep_wf_name), 'resampled_brainmask/_subject_id_', 'subject_id', '/*']]
         else:
-            T1_prep =[['{}Sink'.format(prep_wf_name), 'reoriented_images/_subject_id_', 'subject_id', '/_reorImages0/*']]   
-           
+            T1_prep =[['{}Sink'.format(prep_wf_name), 'reoriented_images/_subject_id_', 'subject_id', '/_reorImages0/*']] 
+            if ibrainmask:
+                bm = [['{}Sink'.format(prep_wf_name), 'reoriented_images/_subject_id_', 'subject_id', '/_reorImages2/*']]  
+            
         preproc_in_dat_tmp_arg = {
             'T1': T1_prep,
             'FLAIR': [['{}Sink'.format(prep_wf_name), 'coregistered_images/_subject_id_', 'subject_id', '/_coreg0/*']],
@@ -188,6 +194,7 @@ if __name__ == '__main__':
     from argparse import ArgumentParser
     parser = ArgumentParser(description='Runs processing workflows')
                
+   
     parser.add_argument('--qc',                                 
                         dest='qc',
                         action='store_true',
@@ -195,8 +202,7 @@ if __name__ == '__main__':
     parser.add_argument('--no-qc', 
                         dest='qc',
                         action='store_false',
-                        help='skip qc plots and scores')
-
+                        help='produce qc plots and scores')
     args= vars(parser.parse_args())
 
     main(**args)
