@@ -5,3 +5,7 @@ The following subject (T1w, FLAIR modalities and brainmask) were used as example
 Sub IDs: 101, 102, 103
 
 This subject can be downloaded from:
+
+https://valdo.grand-challenge.org
+
+(You will need to register)
